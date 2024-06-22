@@ -1,53 +1,59 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Blog Application - Frontend Internship Task
 
-## Getting Started
+## Overview
 
-First, run the development server:
+This project is a blog application where users can view a list of blog posts, read individual posts, and submit new posts. The application uses Next.js for server-side rendering and React.js for building UI components.
 
-```bash
+## Features
+
+1. Home Page: Displays a list of blog posts.
+2. Post Detail Page: Shows the details of a single blog post.
+3. Create Post Page: A form to create a new blog post.
+4. Navigation: Simple navigation between pages.
+5. Styling: Basic styling using CSS-in-JS (styled-components or any CSS framework).
+
+### Installation
+
+Clone the repository
+
+```
+git clone <repository-url>
+cd <repository-name>
+```
+
+### Install dependencies
+
+```
+npm install
+```
+
+### Run the development server
+
+```
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Open the application
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Open your browser and navigate to http://localhost:3000 to view the application.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Project Structure
 
-## Learn More
+- pages/: Contains the Next.js pages for home, post detail, and create post.
+  -- index.js: Home page displaying a list of blog posts.
+  -- [id].js: Post detail page showing the details of a single post.
+  -- create.js: Create post page with a form to submit a new blog post.
+- components/: Contains reusable React components.
+- styles/: Contains styled-components for styling the application.
 
-To learn more about Next.js, take a look at the following resources:
+## API Integration
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This project uses the JSONPlaceholder API to fetch blog posts data. The API endpoint used is https://jsonplaceholder.typicode.com/posts.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## State Management
 
-## Deploy on Vercel
+React's built-in state management is used to handle form inputs and API data fetching.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Styling
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-
-```
-src/
-  components/
-    BlogList.tsx
-    Layout.tsx
-    Nav.tsx
-  interfaces/
-    Blog.ts
-app/
-  create/
-    page.tsx
-  posts/
-    [id]/
-      page.tsx
-  page.tsx
-```
+Styled-components is used for CSS-in-JS styling. It ensures the application is responsive and visually appealing.
