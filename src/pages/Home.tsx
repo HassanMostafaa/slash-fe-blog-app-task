@@ -1,9 +1,9 @@
 "use client";
-import React, { useState, useEffect, useCallback } from "react";
-import { type BlogPost, fetchPosts } from "@/src/helper/blogsHelper";
+import React, { useEffect, useCallback } from "react";
 import BlogList from "@/src/components/blog-list/BlogList";
 import LayoutContainer from "../components/layout-container/LayoutContainer";
 import { InfinitySpin } from "react-loader-spinner";
+import useStore from "@/src/store/useStore";
 
 const holdStyles: React.CSSProperties = {
   textAlign: "center",
@@ -11,24 +11,13 @@ const holdStyles: React.CSSProperties = {
 };
 
 const Home = () => {
-  const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(false);
-  const [hasMore, setHasMore] = useState(true);
+  const { posts, fetchPosts, loading, hasMore } = useStore();
 
   const loadMorePosts = useCallback(async () => {
-    setLoading(true);
-    try {
-      const newPosts = await fetchPosts(page, 20);
-      setPosts((prevPosts) => [...prevPosts, ...newPosts]);
-      setHasMore(newPosts.length > 0);
-      setPage((prevPage) => prevPage + 1);
-    } catch (error) {
-      console.error("Error loading more posts:", error);
-    } finally {
-      setLoading(false);
+    if (!loading && hasMore) {
+      await fetchPosts();
     }
-  }, [page]);
+  }, [loading, hasMore, fetchPosts]);
 
   useEffect(() => {
     loadMorePosts();
@@ -60,7 +49,7 @@ const Home = () => {
           <p style={{ ...holdStyles, color: "#0071f3df" }}> Loading ...</p>
         </div>
       )}
-      {!hasMore && <p style={holdStyles}>You are all cought up 🎉</p>}
+      {!hasMore && <p style={holdStyles}>You are all caught up 🎉</p>}
     </LayoutContainer>
   );
 };
