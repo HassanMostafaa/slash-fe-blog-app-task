@@ -49,7 +49,9 @@ const Home = () => {
           <p style={{ ...holdStyles, color: "#0071f3df" }}> Loading ...</p>
         </div>
       )}
-      {!hasMore && <p style={holdStyles}>You are all caught up 🎉</p>}
+      {!hasMore && (
+        <p style={{ ...holdStyles, marginTop: 32 }}>You are all caught up 🎉</p>
+      )}
     </LayoutContainer>
   );
 };
