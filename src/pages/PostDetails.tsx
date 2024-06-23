@@ -36,8 +36,8 @@ const PostDetail: React.FC<PostDetailProps> = ({ post }) => {
   return (
     <LayoutContainer>
       <PostContainer>
-        <PostTitle>{post.title}</PostTitle>
-        <PostBody>{post.body}</PostBody>
+        {post?.title && <PostTitle>{post.title}</PostTitle>}
+        {post?.body && <PostBody>{post?.body}</PostBody>}
         <Link href="/" style={{ color: "#0070f3" }}>
           &larr; Check more blogs
         </Link>
